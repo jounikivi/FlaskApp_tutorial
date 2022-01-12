@@ -12,12 +12,13 @@ content %}
     />
   </div>
   <div class="form-group">
-    <label for="emailaddress">Email Address</label>
+    <label for="email">Email Address</label>
     <input
       type="email"
       class="form-control"
-      id="emailaddress"
-      placeholder="email"
+      id="email"
+      name="email"
+      placeholder="Enter email"
     />
   </div>
   <div class="form-group">
@@ -31,14 +32,16 @@ content %}
     />
   </div>
   <div class="form-group">
-    <label for="passwordconfirm">Confirm Password</label>
+    <label for="confirmpassword">Confirm Password</label>
     <input
-      type="passwordconfirm"
+      type="password"
       class="form-control"
-      id="passwordconfirm"
-      name="passwordconfirm"
-      placeholder="passwordconfirm"
+      id="confirmpassword"
+      name="confirmpassword"
+      placeholder="Confirm password"
     />
   </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endblock %}

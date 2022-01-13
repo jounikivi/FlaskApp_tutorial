@@ -12,7 +12,7 @@ def login():
 def logout():
   return '<p>Logout</p>'
 
-@auth.route('/singup')
+@auth.route('/singup', methods=['GET', 'POST'])
 def signup():
   if request.method == 'POST':
     email = request.form.get('email')

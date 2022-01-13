@@ -1,5 +1,6 @@
 from flask import Flask, app
 from flask_sqlalchemy import SQLAlchemy
+from .models import User, Note
 from .views import views
 from .auth import auth
 
@@ -11,7 +12,6 @@ def create_app():
   app.config['SECRET_KEY'] = 'Zwjpws6Met'
   app.config['SQLALCHEMY_DATABASE_URL'] = f'sqlite:///{DB_NAME}'
   db.init_app(app)
-
 
 
   app.register_blueprint(views, url_prefix='/')

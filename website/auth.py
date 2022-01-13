@@ -30,6 +30,6 @@ def signup():
     elif len(password) < 7:
       flash('Passwolrs is too short', category='error')
     else:
-      flash('Account is created!', category='error')
+      flash('Account is created!', category='success')
       
   return render_template('singup.html')

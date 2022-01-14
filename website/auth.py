@@ -34,7 +34,7 @@ def signup():
     elif len(password) < 7:
       flash('Passwolrs is too short', category='error')
     else:
-      new_user = User(email=email, userName=userName)
+      new_user = User(email=email, userName=userName, password=generate_password_hash(password, method='sha256'))
       flash('Account is created!', category='success')
       
   return render_template('singup.html')

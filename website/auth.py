@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, flash
+from . import db
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -34,7 +35,11 @@ def signup():
     elif len(password) < 7:
       flash('Passwolrs is too short', category='error')
     else:
-      new_user = User(email=email, userName=userName, password=generate_password_hash(password, method='sha256'))
+      new_user = User(email=email, userName=userName, password=generate_password_hash
+      (password, method='sha256'))
+      db.session.add(new_user)
+      db.session.commit()
       flash('Account is created!', category='success')
+      return redirect(url_for('views.home'))
       
   return render_template('singup.html')

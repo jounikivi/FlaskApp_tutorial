@@ -16,7 +16,13 @@ def login():
     password = request.form.get('password')
 
     user = User.query.filter_by(email=email).first()
-    
+    if user:
+      if check_password_hash(user.password, password):
+        flash('Logged in successfully!', category='success')
+      else:
+        flash('Invalid password, try again!', category='error')
+    else:
+      flash('Emai does not exist!', category='error')
 
   return render_template('login.html', boolean=False)
 
@@ -32,7 +38,11 @@ def signup():
     password = request.form.get('password')
     confirmpassword = request.form.get('confirmpassword')
 
-    if len(email) < 4:
+    user = User.query.filter_by(email=email).first()
+    if user:
+      flash('Email allready exist', category='error')
+
+    elif len(email) < 4:
       flash('Email is too short', category='error')
       
     elif len(userName) < 2:

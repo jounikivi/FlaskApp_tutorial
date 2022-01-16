@@ -28,7 +28,7 @@ def login():
     else:
       flash('Emai does not exist!', category='error')
 
-  return render_template('login.html', boolean=False)
+  return render_template('login.html', user=current_user)
 
 @auth.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -66,4 +66,4 @@ def signup():
       flash('Account is created!', category='success')
       return redirect(url_for('views.home'))
       
-  return render_template('singup.html')
+  return render_template('singup.html', user=current_user)
